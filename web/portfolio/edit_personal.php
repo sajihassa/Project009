@@ -12,7 +12,7 @@ $allTambol = getAllTambol($currentStudent["amphur"]);
 
 if(isset($_POST["submit"])){
 
-  saveStudent($_POST["users_id"],$_POST["student_id"],$_POST["firstname"],$_POST["surname"],$_POST["nickname"],$_POST["id_card"],$_POST["birth_date"],$_POST["sex"],$_POST["ethnicity"],$_POST["nationality"],$_POST["religion"],$_POST["weight"],$_POST["height"],$_POST["email_student"],$_POST["phone_student"],$_POST["motto"],$_POST["disease"],$_POST["facebook"],$_POST["line_id"],$_POST["home_no"],$_POST["tambol"],$_POST["amphur"],$_POST["province"],$_POST["zipcode"],$_FILES["image"]["name"]);
+  saveStudent($_POST["users_id"],$_POST["firstname"],$_POST["surname"],$_POST["nickname"],$_POST["id_card"],$_POST["birth_date"],$_POST["sex"],$_POST["ethnicity"],$_POST["nationality"],$_POST["religion"],$_POST["weight"],$_POST["height"],$_POST["email_student"],$_POST["phone_student"],$_POST["motto"],$_POST["disease"],$_POST["facebook"],$_POST["line_id"],$_POST["home_no"],$_POST["tambol"],$_POST["amphur"],$_POST["province"],$_POST["zipcode"],$_FILES["image"]["name"]);
 }
 
 ?>
@@ -40,20 +40,6 @@ if(isset($_POST["submit"])){
               <div class="card-body">
                 <legend>ข้อมูลส่วนตัว</legend>
                 <div class="row">
-                  <div class="col-md-6">
-                    <div class="form-group">
-                      <label class="bmd-label-floating">รหัสนักเรียน</label>
-                      <input type="text" class="form-control" name="student_id" value="<?php echo $currentStudent["student_id"];?>" required>
-                    </div>
-                  </div>
-                  <div class="col-md-6">
-                    <div class="form-group">
-                      <label class="bmd-label-floating">รูปภาพนักเรียน</label>
-                      <input type="file" class="form-control" name="image">
-                    </div>
-                  </div>
-                </div>
-                <div class="row">
                   <div class="col-md-5">
                     <div class="form-group">
                       <label class="bmd-label-floating">ชื่อ</label>
@@ -74,12 +60,20 @@ if(isset($_POST["submit"])){
                   </div>
                 </div>
                 <div class="row">
-                  <div class="col-md-12">
+                  <div class="col-md-6">
                     <div class="form-group">
                       <label class="bmd-label-floating">เลขบัตรประจำตัวประชาชน</label>
                       <input type="text" class="form-control" name="id_card" value="<?php echo $currentStudent["id_card"];?>" required>
                     </div>
                   </div>
+
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label class="bmd-label-floating">รูปภาพนักเรียน</label>
+                      <input type="file" class="form-control" name="image">
+                    </div>
+                  </div>
+
                 </div>
                 <div class="row">
                   <div class="col-md-6">
@@ -194,12 +188,12 @@ if(isset($_POST["submit"])){
                       <select name="province" class="form-control" id="province">
                         <option value="">-- โปรดเลือก --</option>
                         <?php foreach($allProvince as $dataProvince){ ?>
-                          <?php $selected = ""; 
+                          <?php $selected = "";
                           if($currentStudent['province'] == $dataProvince['id']){
-                            $selected = " selected"; 
+                            $selected = " selected";
 
-                          } 
-                          ?> 
+                          }
+                          ?>
                           <option value="<?php echo $dataProvince['id']?>" <?php echo $selected;?>><?php echo $dataProvince['name_th']?></option>
                         <?php } ?>
                       </select>
@@ -214,12 +208,12 @@ if(isset($_POST["submit"])){
                         <select name="amphur" class="form-control" id="amphures">
                           <option value="">-- โปรดเลือก --</option>
                           <?php foreach($allAmphur as $dataAm){ ?>
-                            <?php $selected = ""; 
+                            <?php $selected = "";
                             if($currentStudent['amphur'] == $dataAm['id']){
-                              $selected = " selected"; 
+                              $selected = " selected";
 
-                            } 
-                            ?> 
+                            }
+                            ?>
                             <option value="<?php echo $dataAm['id']?>" <?php echo $selected;?>><?php echo $dataAm['name_th']?></option>
                           <?php } ?>
                         </select>
@@ -231,19 +225,19 @@ if(isset($_POST["submit"])){
                   <div class="col-md-6">
                     <div class="form-group">
                       <label class="bmd-label-floating">ตำบล</label>
-                      
+
                       <?php if($currentStudent["tambol"] == "" || $currentStudent["tambol"] == 0){ ?>
                         <select name="tambol" class="form-control" id="districts"></select>
                       <?php }else{ ?>
                         <select name="tambol" class="form-control" id="districts">
                           <option value="">-- โปรดเลือก --</option>
                           <?php foreach($allTambol as $dataTam){ ?>
-                            <?php $selected = ""; 
+                            <?php $selected = "";
                             if($currentStudent['tambol'] == $dataTam['id']){
-                              $selected = " selected"; 
+                              $selected = " selected";
 
-                            } 
-                            ?> 
+                            }
+                            ?>
                             <option value="<?php echo $dataTam['id']?>" <?php echo $selected;?>><?php echo $dataTam['name_th']?></option>
                           <?php } ?>
                         </select>
@@ -258,6 +252,10 @@ if(isset($_POST["submit"])){
                   </div>
                 </div>
 
+                <hr/>
+                <legend>ความสามารถพิเศษ / ทักษะพิเศษ</legend>
+
+
                 <div align="center">
                   <input type="submit" name="submit" class="btn btn-success btn-round" value="บันทึก">
                   <input type="button" name="button" class="btn btn-danger btn-round" onClick="javascript:history.go(-1)" value="ย้อนกลับ">
@@ -268,7 +266,7 @@ if(isset($_POST["submit"])){
               </div>
             </div>
           </div>
-          
+
         </div>
       </form>
 
@@ -364,7 +362,7 @@ if(isset($_POST["submit"])){
       </script>
 
       <script>
-    
+
       $('#birth_date').datetimepicker({
         lang:'th',
         timepicker:false,
@@ -379,7 +377,7 @@ if(isset($_POST["submit"])){
 
     </div>
   </main>
-  
+
 </body>
 
 </html>
