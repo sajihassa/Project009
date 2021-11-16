@@ -12,24 +12,24 @@ function checkLogin($username,$password){
 	global $con;
 	$sql = "select * from users where username = '".$username."' AND password='".$password."'";
 	$res = mysqli_query($con,$sql);
-	
+
 	while($row = mysqli_fetch_array($res)) {
 		$data['id'] = $row['id'];
 
 	}
 	if (!empty($data)) {
-		
+
 		session_start();
 		$id = $data['id'];
 		$_SESSION['id'] = $data['id'];
 		echo ("<script language='JavaScript'>
 			window.location.href='dashboard.php';
 			</script>");
-		
+
 	}else{
 		echo "<script type='text/javascript'>alert('ไม่สามารถเข้าสู่ระบบได้ ');</script>";
 	}
-	
+
 	mysqli_close($con);
 
 }
@@ -67,17 +67,17 @@ function formatDateFull($date){
 	return  $raw_date[2] . "/" . $raw_date[1] . "/" . $raw_date[0];
 }
 
-function saveRegister($username,$password,$email,$phone){
+function saveRegister($username,$password,$email){
 	global $con;
 
-	$sql = "INSERT INTO users (username, password, email, phone) VALUES('".$username."','".$password."','".$email."','".$phone."')";
+	$sql = "INSERT INTO users (username, password, email) VALUES('".$username."','".$password."','".$email."')";
 	mysqli_query($con,$sql);
-	
+
 	mysqli_close($con);
 	echo ("<script language='JavaScript'>
 		alert('ลงทะเบียนเรียบร้อย');
 		window.location.href='index.php';
-		</script>"); 
+		</script>");
 }
 
 function saveStudent($users_id,$student_id,$firstname,$surname,$nickname,$id_card,$birth_date,$sex,$ethnicity,$nationality,$religion,$weight,$height,$email_student,$phone_student,$motto,$disease,$facebook,$line_id,$home_no,$tambol,$amphur,$province,$zipcode,$image){
@@ -88,7 +88,7 @@ function saveStudent($users_id,$student_id,$firstname,$surname,$nickname,$id_car
 
 	$sql_check = "select * from students where users_id = '".$users_id."' ";
 	$res = mysqli_query($con,$sql_check);
-	
+
 	while($row = mysqli_fetch_array($res)) {
 		$data['users_id'] = $row['users_id'];
 
@@ -107,9 +107,9 @@ function saveStudent($users_id,$student_id,$firstname,$surname,$nickname,$id_car
 
 			$sql_ins = "INSERT INTO students (users_id, student_id, firstname, surname, nickname, id_card, birth_date, sex, ethnicity, nationality, religion, weight, height, email_student, phone_student, motto, disease, facebook, line_id, home_no, tambol, amphur, province, zipcode) VALUES('".$users_id."','".$student_id."','".$firstname."','".$surname."','".$nickname."','".$id_card."','".$convert_birth_date."','".$sex."','".$ethnicity."','".$nationality."','".$religion."','".$weight."','".$height."','".$email_student."','".$phone_student."','".$motto."','".$disease."','".$facebook."','".$line_id."','".$home_no."','".$tambol."','".$amphur."','".$province."','".$zipcode."')";
 			mysqli_query($con,$sql_ins);
-			
+
 		}
-		
+
 	}else{
 
 		if($image != null){
@@ -125,19 +125,19 @@ function saveStudent($users_id,$student_id,$firstname,$surname,$nickname,$id_car
 
 		}
 	}
-	
+
 	mysqli_close($con);
 	echo ("<script language='JavaScript'>
 		alert('บันทึกข้อมูลเรียบร้อย');
 		window.location.href='edit_personal.php';
-		</script>"); 
+		</script>");
 }
 
 function getCurrentStudentByUserId($users_id){
 
 	global $con;
 	$sql = "SELECT *,s.id as sid,p.name_th as pname_th,a.name_th as aname_th,d.name_th as dname_th
-	FROM students s 
+	FROM students s
 	LEFT JOIN provinces p ON s.province = p.id
 	LEFT JOIN amphures a ON s.amphur = a.id
 	LEFT JOIN districts d ON s.tambol = d.id
@@ -155,7 +155,7 @@ function saveFamily($users_id,$father_firstname,$father_surname,$father_carrier,
 
 	$sql_check = "select * from families where users_id = '".$users_id."' ";
 	$res = mysqli_query($con,$sql_check);
-	
+
 	while($row = mysqli_fetch_array($res)) {
 		$data['users_id'] = $row['users_id'];
 
@@ -170,12 +170,12 @@ function saveFamily($users_id,$father_firstname,$father_surname,$father_carrier,
 		mysqli_query($con,$sql_update);
 
 	}
-	
+
 	mysqli_close($con);
 	echo ("<script language='JavaScript'>
 		alert('บันทึกข้อมูลเรียบร้อย');
 		window.location.href='edit_family.php';
-		</script>"); 
+		</script>");
 }
 
 function getCurrentFamilyByUserId($users_id){
@@ -207,16 +207,16 @@ function saveActivity($users_id,$activity_type,$activity_topic,$activity_detail,
 	}else{
 
 		$sql = "INSERT INTO activities (users_id, activity_type, activity_topic, activity_detail) VALUES('".$users_id."','".$activity_type."','".$activity_topic."','".$activity_detail."')";
-			
+
 	}
 	mysqli_query($con,$sql);
-	
+
 
 	mysqli_close($con);
 	echo ("<script language='JavaScript'>
 		alert('เพิ่มข้อมูลเรียบร้อย');
 		window.location.href='manage_activity.php';
-		</script>"); 
+		</script>");
 }
 
 function editActivity($id,$users_id,$activity_type,$activity_topic,$activity_detail,$activity_image){
@@ -231,18 +231,18 @@ function editActivity($id,$users_id,$activity_type,$activity_topic,$activity_det
 	}else{
 
 		$sql = "UPDATE activities SET activity_type='".$activity_type."',activity_topic='".$activity_topic."',activity_detail='".$activity_detail."' WHERE id = '".$id."'";
-		
+
 	}
 	mysqli_query($con,$sql);
-	
+
 	mysqli_close($con);
 
-	
+
 	echo ("<script language='JavaScript'>
 		alert('แก้ไขข้อมูลเรียบร้อยแล้ว');
 		window.location.href='manage_activity.php';
-		</script>"); 
-	
+		</script>");
+
 }
 
 function deleteActivity($id){
@@ -253,7 +253,7 @@ function deleteActivity($id){
 	echo ("<script language='JavaScript'>
 		alert('ลบข้อมูลเรียบร้อย');
 		window.location.href='manage_activity.php';
-		</script>"); 
+		</script>");
 
 }
 
@@ -262,7 +262,7 @@ function getAllActivity($users_id){
 
 	$sql = "SELECT *
 	FROM activities
-	WHERE users_id = '".$users_id."' 
+	WHERE users_id = '".$users_id."'
 	ORDER BY id DESC";
 
 	$res = mysqli_query($con,$sql);
@@ -305,12 +305,12 @@ function saveEducation($users_id,$study_class,$type_study,$grade,$school,$provin
 
 	$sql = "INSERT INTO educations (users_id, study_class, type_study, grade, school, province, start_year, end_year) VALUES('".$users_id."','".$study_class."','".$type_study."','".$grade."','".$school."','".$province."','".$start_year."','".$end_year."')";
 	mysqli_query($con,$sql);
-	
+
 	mysqli_close($con);
 	echo ("<script language='JavaScript'>
 		alert('เพิ่มข้อมูลเรียบร้อย');
 		window.location.href='manage_education.php';
-		</script>"); 
+		</script>");
 }
 
 function editEducation($id,$users_id,$study_class,$type_study,$grade,$school,$province,$start_year,$end_year){
@@ -319,15 +319,15 @@ function editEducation($id,$users_id,$study_class,$type_study,$grade,$school,$pr
 
 	$sql = "UPDATE educations SET study_class='".$study_class."',type_study='".$type_study."',grade='".$grade."',school='".$school."',province='".$province."',start_year='".$start_year."',end_year='".$end_year."' WHERE id = '".$id."'";
 	mysqli_query($con,$sql);
-	
+
 	mysqli_close($con);
 
-	
+
 	echo ("<script language='JavaScript'>
 		alert('แก้ไขข้อมูลเรียบร้อยแล้ว');
 		window.location.href='manage_education.php';
-		</script>"); 
-	
+		</script>");
+
 }
 
 function deleteEducation($id){
@@ -338,7 +338,7 @@ function deleteEducation($id){
 	echo ("<script language='JavaScript'>
 		alert('ลบข้อมูลเรียบร้อย');
 		window.location.href='manage_education.php';
-		</script>"); 
+		</script>");
 
 }
 
@@ -347,7 +347,7 @@ function getAllEducation($users_id){
 
 	$sql = "SELECT *
 	FROM educations
-	WHERE users_id = '".$users_id."' 
+	WHERE users_id = '".$users_id."'
 	ORDER BY id DESC";
 
 	$res = mysqli_query($con,$sql);
@@ -387,21 +387,21 @@ function getCurrentEducation($id){
 
 }
 
-function editProfile($id,$username,$password,$email,$phone){
+function editProfile($id,$username,$password,$email){
 
 	global $con;
 
-	$sql = "UPDATE users SET username='".$username."',password='".$password."',email='".$email."',phone='".$phone."' WHERE id = '".$id."'";
+	$sql = "UPDATE users SET username='".$username."',password='".$password."',email='".$email."' WHERE id = '".$id."'";
 	mysqli_query($con,$sql);
-	
+
 	mysqli_close($con);
 
-	
+
 	echo ("<script language='JavaScript'>
 		alert('บันทึกข้อมูลเรียบร้อย');
 		window.location.href='profile.php';
-		</script>"); 
-	
+		</script>");
+
 }
 
 function getCurrentUser($id){

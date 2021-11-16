@@ -4,9 +4,9 @@
 <?php
 require_once("header.php");
 ?>
-<?php 
+<?php
 if(isset($_POST["submit"])){
-  saveRegister($_POST["username"],$_POST["password"],$_POST["email"],$_POST["phone"]);
+  saveRegister($_POST["username"],$_POST["password"],$_POST["email"]);
 }
 ?>
 <body class="" style="margin-top: -27px;">
@@ -26,7 +26,7 @@ if(isset($_POST["submit"])){
                 <span class="navbar-toggler-bar bar3"></span>
               </span>
             </button>
-            
+
           </div>
         </nav>
         <!-- End Navbar -->
@@ -58,10 +58,6 @@ if(isset($_POST["submit"])){
                     <div class="mb-3">
                       <input type="text" name="email" class="form-control" placeholder="E-mail">
                     </div>
-                    <label>หมายเลขโทรศัพท์</label>
-                    <div class="mb-3">
-                      <input type="text" name="phone" class="form-control" placeholder="Telephone">
-                    </div>
                     <div class="text-center">
                       <button type="submit" name="submit" class="btn bg-gradient-info w-100 mt-4 mb-0">เข้าสู่ระบบ</button>
                     </div>
@@ -82,8 +78,8 @@ if(isset($_POST["submit"])){
   <footer class="footer py-5">
     <div class="container">
       <div class="row">
-        
-        
+
+
       </div>
       <div class="row">
         <div class="col-8 mx-auto text-center mt-1">
@@ -96,7 +92,7 @@ if(isset($_POST["submit"])){
       </div>
     </div>
   </footer>
-  
+
 </body>
 
 </html>
