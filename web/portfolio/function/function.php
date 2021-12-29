@@ -8,52 +8,42 @@ $con->set_charset("utf8");
 date_default_timezone_set("Asia/Bangkok");
 
 function checkLogin($username,$password){
-	$data = array();
-	global $con;
-	$sql = "select * from users where username = '".$username."' AND password='".$password."'";
-	$res = mysqli_query($con,$sql);
+    $data = array();
+    global $con;
+    $sql = "select * from users where username = '".$username."' AND password='".$password."'";
+    $res = mysqli_query($con,$sql);
+    
+    while($row = mysqli_fetch_array($res)) {
+        $data['id'] = $row['id'];
+        $data['userlevel'] = $row['userlevel'];
 
-	while($row = mysqli_fetch_array($res)) {
-		$data['id'] = $row['id'];
+    }
+    if (!empty($data)) {
+        
+        session_start();
+        $id = $data['id'];
+        $_SESSION['id'] = $data['id'];
+        $userlevel = $data['userlevel'];
+        $_SESSION['userlevel'] = $data['userlevel'];
+        if ($_SESSION['userlevel'] == 'u') {
+            echo ("<script language='JavaScript'>
+            window.location.href='dashboard.php';
+            </script>");
+        }
+        if ($_SESSION['userlevel'] == 'a') {
+            echo ("<script language='JavaScript'>
+            window.location.href='../admin/index.php';
+            </script>");
+        }
+        
+        
+    }else{
+        echo "<script type='text/javascript'>alert('ไม่สามารถเข้าสู่ระบบได้ ');</script>";
+    }
+    
+    mysqli_close($con);
 
-	}
-	if (!empty($data)) {
 
-		session_start();
-		$id = $data['id'];
-		$_SESSION['id'] = $data['id'];
-		echo ("<script language='JavaScript'>
-			window.location.href='dashboard.php';
-			</script>");
-
-	}else{
-		echo "<script type='text/javascript'>alert('ไม่สามารถเข้าสู่ระบบได้ ');</script>";
-	}
-
-	mysqli_close($con);
-
-}
-
-
-function logout(){
-	session_start();
-	session_unset();
-	session_destroy();
-	echo ("<script language='JavaScript'>
-		window.location.href='index.php';
-		</script>");
-	exit();
-}
-
-function getUser($id){
-
-	global $con;
-
-	$res = mysqli_query($con,"SELECT * FROM users WHERE id = '".$id."'");
-	$result=mysqli_fetch_array($res,MYSQLI_ASSOC);
-	return $result;
-
-	mysqli_close($con);
 
 }
 
@@ -68,17 +58,17 @@ function formatDateFull($date){
 }
 
 function saveRegister($username,$password,$email,$phone){
-	global $con;
-
-	$sql = "INSERT INTO users (username, password, email, phone) VALUES('".$username."','".$password."','".$email."','".$phone."')";
-	mysqli_query($con,$sql);
-
-	mysqli_close($con);
-	echo ("<script language='JavaScript'>
-		alert('ลงทะเบียนเรียบร้อย');
-		window.location.href='index.php';
-		</script>");
+    global $con;
+    $sql = "INSERT INTO users (username, password, email, phone, userlevel) VALUES('".$username."','".$password."','".$email."','".$phone."', 'u')";
+    mysqli_query($con,$sql);
+    
+    mysqli_close($con);
+    echo ("<script language='JavaScript'>
+        alert('ลงทะเบียนเรียบร้อย');
+        window.location.href='index.php';
+        </script>"); 
 }
+
 
 function saveStudent($users_id,$firstname,$surname,$nickname,$id_card,$birth_date,$sex,$ethnicity,$nationality,$religion,$weight,$height,$email_student,$phone_student,$motto,$disease,$facebook,$line_id,$home_no,$tambol,$amphur,$province,$zipcode,$image){
 	global $con;

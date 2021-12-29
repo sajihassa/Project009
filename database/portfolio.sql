@@ -10193,15 +10193,17 @@ CREATE TABLE `users` (
   `username` varchar(45) NOT NULL,
   `password` varchar(45) NOT NULL,
   `email` varchar(45) NOT NULL,
-  `phone` varchar(15) NOT NULL
+  `phone` varchar(15) NOT NULL,
+  `userlevel` VARCHAR(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `username`, `password`, `email`, `phone`) VALUES
-(1, 'user', 'user', 'user@gmail.com', '1234567890');
+INSERT INTO `users` (`id`, `username`, `password`, `email`, `phone`,`userlevel`) VALUES
+(1, 'user', 'user', 'user@gmail.com', '1234567890','u'),
+(2, 'admin', 'admin', 'admin@gmail.com', '1234567890','a');
 
 --
 -- Indexes for dumped tables

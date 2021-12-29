@@ -9,7 +9,7 @@
 			<i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none" aria-hidden="true" id="iconSidenav"></i>
 			<a class="navbar-brand m-0" href="#" target="_blank">
 				<img src="assets/img/logo-ct.png" class="navbar-brand-img h-100" alt="main_logo">
-				<span class="ms-1 font-weight-bold">Portfolio</span>
+				<span class="ms-1 font-weight-bold">engineer portfolio</span>
 			</a>
 		</div>
 		<hr class="horizontal dark mt-0">
@@ -24,8 +24,18 @@
 				<?php }else{ ?>
 
 					<li class="nav-item">
-						<a class="nav-link " href="dashboard.php">
+						<a class="nav-link " href="../home/index.php">
 							<span class="nav-link-text ms-1">หน้าหลัก</span>
+						</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link "  href="https://engineer.wu.ac.th/?page_id=15080" target="_blank">
+							<span class="nav-link-text ms-1">หลักสูตรที่เปิดสอน</span>
+						</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link "  href="https://engineer.wu.ac.th/?page_id=6767" target="_blank">
+							<span class="nav-link-text ms-1">บุคลากร</span>
 						</a>
 					</li>
 					<li class="nav-item">

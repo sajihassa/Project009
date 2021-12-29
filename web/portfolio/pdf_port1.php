@@ -97,8 +97,11 @@ EOD;
 }
 
 $body_html  .= <<<EOD
-<div style="text-align:left;margin:0"><b style="font-size:26px;">Portfolio</b></div>
+<div style="text-align:center;margin:0"><h1 style="font-size:26px;">Portfolio</h1></div>
 <br/>
+<div style="text-align:center;margin:0">
+    <img src="images/student/{$currentStudent['image']}" style="width:900px;height:900px;">
+</div>
 <div style="text-align:left;margin:0"><b style="font-size:26px;">ข้อมูลส่วนตัว</b></div>
 <table style="width:100%;">
     <tr>
