@@ -12,7 +12,7 @@ if(isset($_POST["submit"])){
   }else{
     editEducation($_POST["id"],$_POST["users_id"],$_POST["study_class"],$_POST["type_study"],$_POST["grade"],$_POST["school"],$_POST["province"],$_POST["start_year"],$_POST["end_year"]);
   }
-  
+
 
 }
 if($_GET["id"] == ""){
@@ -46,49 +46,63 @@ if($_GET["id"] == ""){
               <div class="card-body">
 
                 <div class="row">
-                  <div class="col-md-12">
+                  <div class="col-md-4">
                     <div class="form-group">
                       <label class="bmd-label-floating">ระดับการศึกษา</label>
-                      <input type="text" class="form-control" name="study_class" value="<?php echo $currentEducation["study_class"];?>" required>
+                      <select name="study_class" class="form-control" required>
+                        <option value="">-- โปรดระบุ --</option>
+                        <option value="ประถมศึกษา" <?php if($currentEducation['study_class'] == "ประถมศึกษา"){ ?> selected<?php } ?>>ประถมศึกษา</option>
+                        <option value="มัธยมศึกษาตอนต้น" <?php if($currentEducation['study_class'] == "มัธยมศึกษาตอนต้น"){ ?> selected<?php } ?>>มัธยมศึกษาตอนต้น</option>
+                        <option value="มัธยมศึกษาตอนปลาย" <?php if($currentEducation['study_class'] == "มัธยมศึกษาตอนปลาย"){ ?> selected<?php } ?>>มัธยมศึกษาตอนปลาย</option>
+                      </select>
+
                     </div>
                   </div>
-                </div>
-                <div class="row">
-                  <div class="col-md-6">
+
+                  <div class="col-md-4">
                     <div class="form-group">
                       <label class="bmd-label-floating">แผนการเรียน</label>
-                      <input type="text" class="form-control" name="type_study" value="<?php echo $currentEducation["type_study"];?>" required>
+                      <select name="type_study" class="form-control" required>
+                        <option value="">-- โปรดระบุ --</option>
+                        <option value="วิทย์-คณิต" <?php if($currentEducation['type_study'] == "วิทย์-คณิต"){ ?> selected<?php } ?>>วิทย์-คณิต</option>
+                        <option value="ศิลป์-คำนวณ" <?php if($currentEducation['type_study'] == "ศิลป์-คำนวณ"){ ?> selected<?php } ?>>ศิลป์-คำนวณ</option>
+                      </select>
+
                     </div>
                   </div>
-                  <div class="col-md-6">
+
+                </div>
+                <div class="row">
+                  <div class="col-md-4">
                     <div class="form-group">
                       <label class="bmd-label-floating">เกรดเฉลี่ย</label>
                       <input type="text" class="form-control" name="grade" value="<?php echo $currentEducation["grade"];?>" required>
                     </div>
                   </div>
-                </div>
-                <div class="row">
-                  <div class="col-md-6">
+
+                  <div class="col-md-4">
                     <div class="form-group">
                       <label class="bmd-label-floating">โรงเรียน</label>
                       <input type="text" class="form-control" name="school" value="<?php echo $currentEducation["school"];?>" required>
                     </div>
                   </div>
-                  <div class="col-md-6">
+
+                  <div class="col-md 4">
                     <div class="form-group">
                       <label class="bmd-label-floating">จังหวัด</label>
                       <input type="text" class="form-control" name="province" value="<?php echo $currentEducation["province"];?>" required>
                     </div>
                   </div>
                 </div>
+
                 <div class="row">
-                  <div class="col-md-6">
+                  <div class="col-md-4">
                     <div class="form-group">
                       <label class="bmd-label-floating">ปีการศึกษาที่เริ่ม</label>
                       <input type="text" class="form-control" name="start_year" value="<?php echo $currentEducation["start_year"];?>" required>
                     </div>
                   </div>
-                  <div class="col-md-6">
+                  <div class="col-md-4">
                     <div class="form-group">
                       <label class="bmd-label-floating">ปีการศึกษาที่จบ</label>
                       <input type="text" class="form-control" name="end_year" value="<?php echo $currentEducation["end_year"];?>" required>
@@ -106,7 +120,7 @@ if($_GET["id"] == ""){
               </div>
             </div>
           </div>
-          
+
         </div>
       </form>
 
@@ -117,7 +131,7 @@ if($_GET["id"] == ""){
 
     </div>
   </main>
-  
+
 </body>
 
 </html>

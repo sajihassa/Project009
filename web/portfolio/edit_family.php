@@ -69,7 +69,7 @@ if(isset($_POST["submit"])){
                   <div class="col-md-12">
                     <div class="form-group">
                       <label class="bmd-label-floating">หมายเลขโทรศัพท์บิดา</label>
-                      <input type="text" class="form-control" name="father_phone" value="<?php echo $currentFamily["father_phone"];?>" required>
+                      <input type="text" maxlength=10 minlength=10 class="form-control" name="father_phone" value="<?php echo $currentFamily["father_phone"];?>" required>
                     </div>
                   </div>
                 </div>
@@ -107,7 +107,7 @@ if(isset($_POST["submit"])){
                   <div class="col-md-12">
                     <div class="form-group">
                       <label class="bmd-label-floating">หมายเลขโทรศัพท์มารดา</label>
-                      <input type="text" class="form-control" name="mother_phone" value="<?php echo $currentFamily["mother_phone"];?>" required>
+                      <input type="text"  maxlength=10 minlength=10 class="form-control" name="mother_phone" value="<?php echo $currentFamily["mother_phone"];?>" required>
                     </div>
                   </div>
                 </div>
@@ -145,7 +145,7 @@ if(isset($_POST["submit"])){
                   <div class="col-md-12">
                     <div class="form-group">
                       <label class="bmd-label-floating">หมายเลขโทรศัพท์ผู้ปกครอง</label>
-                      <input type="text" class="form-control" name="parent_phone" value="<?php echo $currentFamily["parent_phone"];?>" required>
+                      <input type="text"  maxlength=10 minlength=10 class="form-control" name="parent_phone" value="<?php echo $currentFamily["parent_phone"];?>" required>
                     </div>
                   </div>
                 </div>
@@ -177,18 +177,18 @@ if(isset($_POST["submit"])){
                       <select name="parent_province" class="form-control" id="province">
                         <option value="">-- โปรดเลือก --</option>
                         <?php foreach($allProvince as $dataProvince){ ?>
-                          <?php $selected = ""; 
+                          <?php $selected = "";
                           if($currentFamily['parent_province'] == $dataProvince['id']){
-                            $selected = " selected"; 
+                            $selected = " selected";
 
-                          } 
-                          ?> 
+                          }
+                          ?>
                           <option value="<?php echo $dataProvince['id']?>" <?php echo $selected;?>><?php echo $dataProvince['name_th']?></option>
                         <?php } ?>
                       </select>
                     </div>
                   </div>
-                  
+
                   <div class="col-md-6">
                     <div class="form-group">
                       <label class="bmd-label-floating">อำเภอ</label>
@@ -199,12 +199,12 @@ if(isset($_POST["submit"])){
                         <select name="parent_amphur" class="form-control" id="amphures">
                           <option value="">-- โปรดเลือก --</option>
                           <?php foreach($allAmphur as $dataAm){ ?>
-                            <?php $selected = ""; 
+                            <?php $selected = "";
                             if($currentFamily['parent_amphur'] == $dataAm['id']){
-                              $selected = " selected"; 
+                              $selected = " selected";
 
-                            } 
-                            ?> 
+                            }
+                            ?>
                             <option value="<?php echo $dataAm['id']?>" <?php echo $selected;?>><?php echo $dataAm['name_th']?></option>
                           <?php } ?>
                         </select>
@@ -223,12 +223,12 @@ if(isset($_POST["submit"])){
                         <select name="parent_tambol" class="form-control" id="districts">
                           <option value="">-- โปรดเลือก --</option>
                           <?php foreach($allTambol as $dataTam){ ?>
-                            <?php $selected = ""; 
+                            <?php $selected = "";
                             if($currentFamily['parent_tambol'] == $dataTam['id']){
-                              $selected = " selected"; 
+                              $selected = " selected";
 
-                            } 
-                            ?> 
+                            }
+                            ?>
                             <option value="<?php echo $dataTam['id']?>" <?php echo $selected;?>><?php echo $dataTam['name_th']?></option>
                           <?php } ?>
                         </select>
@@ -254,7 +254,7 @@ if(isset($_POST["submit"])){
               </div>
             </div>
           </div>
-          
+
         </div>
       </form>
 
@@ -332,7 +332,7 @@ if(isset($_POST["submit"])){
 
     </div>
   </main>
-  
+
 </body>
 
 </html>

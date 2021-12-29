@@ -34,45 +34,39 @@ if(isset($_POST["submit"])){
 
               <div class="card-body">
                 <div class="row">
-                  <div class="col-md-6">
-                    <div class="form-group">
-                      <label class="bmd-label-floating">ชื่อผู้ใช้งาน</label>
-                      <input type="text" class="form-control" name="username" value="<?php echo $currentUser["username"];?>" required>
+                  <fieldset disabled>
+                    <div class="col-md-4">
+                      <div class="form-group">
+                        <label class="bmd-label-floating">ชื่อผู้ใช้งาน</label>
+                        <input type="text" class="form-control" name="username" value="<?php echo $currentUser["username"];?>" required>
+                      </div>
                     </div>
-                  </div>
-                  <div class="col-md-6">
+                  </fieldset>
+                  <div class="col-md-4">
                     <div class="form-group">
                       <label class="bmd-label-floating">รหัสผ่าน</label>
                       <input type="password" class="form-control" name="password" value="<?php echo $currentUser["password"];?>" required>
                     </div>
                   </div>
-                </div>
-                <div class="row">
-                  <div class="col-md-6">
+
+                  <div class="col-md-4">
                     <div class="form-group">
                       <label class="bmd-label-floating">อีเมล</label>
                       <input type="text" class="form-control" name="email" value="<?php echo $currentUser["email"];?>" required>
                     </div>
                   </div>
-                  <div class="col-md-6">
-                    <div class="form-group">
-                      <label class="bmd-label-floating">หมายเลขโทรศัพท์</label>
-                      <input type="text" class="form-control" name="phone" value="<?php echo $currentUser["phone"];?>" required>
-                    </div>
+
+                  <div align="center">
+                    <input type="submit" name="submit" class="btn btn-success btn-round" value="บันทึก">
+                    <input type="button" name="button" class="btn btn-danger btn-round" onClick="javascript:history.go(-1)" value="ย้อนกลับ">
+
                   </div>
-                </div>
-
-                <div align="center">
-                  <input type="submit" name="submit" class="btn btn-success btn-round" value="บันทึก">
-                  <input type="button" name="button" class="btn btn-danger btn-round" onClick="javascript:history.go(-1)" value="ย้อนกลับ">
-
-                </div>
                 <div class="clearfix"></div>
 
+                </div>
               </div>
-            </div>
           </div>
-          
+
         </div>
       </form>
 
@@ -83,7 +77,7 @@ if(isset($_POST["submit"])){
 
     </div>
   </main>
-  
+
 </body>
 
 </html>

@@ -15,7 +15,7 @@ $pdf = new TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8',
 // set document information
 $pdf->SetCreator(PDF_CREATOR);
 $pdf->SetAuthor('Nicola Asuni');
-$pdf->SetTitle('Template Portfolio');
+$pdf->SetTitle('My Portfolio');
 $pdf->SetSubject('TCPDF Tutorial');
 $pdf->SetKeywords('TCPDF, PDF, example, test, guide');
 
@@ -73,9 +73,9 @@ foreach($allEducation as $data){
             <td style="text-align:center;">{$data['grade']}</td>
             <td style="text-align:center;">{$data['school']}</td>
             <td style="text-align:center;">{$data['province']}</td>
-            
+
         </tr>
-        
+
 
 EOD;
 }
@@ -91,7 +91,7 @@ foreach($allActivity as $data2){
             <td style="text-align:center;">{$data2['activity_topic']}</td>
             <td style="text-align:center;">{$data2['activity_detail']}</td>
         </tr>
-        
+
 
 EOD;
 }

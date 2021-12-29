@@ -40,49 +40,42 @@ if(isset($_POST["submit"])){
               <div class="card-body">
                 <legend>ข้อมูลส่วนตัว</legend>
                 <div class="row">
-                  <div class="col-md-5">
+                  <div class="col-md-4">
                     <div class="form-group">
                       <label class="bmd-label-floating">ชื่อ</label>
                       <input type="text" class="form-control" name="firstname" value="<?php echo $currentStudent["firstname"];?>" required>
                     </div>
                   </div>
-                  <div class="col-md-5">
+                  <div class="col-md-4">
                     <div class="form-group">
                       <label class="bmd-label-floating">นามสกุล</label>
                       <input type="text" class="form-control" name="surname" value="<?php echo $currentStudent["surname"];?>" required>
                     </div>
                   </div>
-                  <div class="col-md-2">
+                  <div class="col-md-4">
                     <div class="form-group">
                       <label class="bmd-label-floating">ชื่อเล่น</label>
                       <input type="text" class="form-control" name="nickname" value="<?php echo $currentStudent["nickname"];?>" required>
                     </div>
                   </div>
+
+
                 </div>
+
                 <div class="row">
-                  <div class="col-md-6">
+                  <div class="col-md-4">
                     <div class="form-group">
                       <label class="bmd-label-floating">เลขบัตรประจำตัวประชาชน</label>
-                      <input type="text" class="form-control" name="id_card" value="<?php echo $currentStudent["id_card"];?>" required>
+                      <input type="text"  maxlength=13 minlength=13 class="form-control" name="id_card" value="<?php echo $currentStudent["id_card"];?>" required>
                     </div>
                   </div>
-
-                  <div class="col-md-6">
-                    <div class="form-group">
-                      <label class="bmd-label-floating">รูปภาพนักเรียน</label>
-                      <input type="file" class="form-control" name="image">
-                    </div>
-                  </div>
-
-                </div>
-                <div class="row">
-                  <div class="col-md-6">
+                  <div class="col-md-4">
                     <div class="form-group">
                       <label class="bmd-label-floating">วันเกิด</label>
                       <input type="text" class="form-control" name="birth_date" id="birth_date" value="<?php echo formatDateFull($currentStudent["birth_date"]);?>" required>
                     </div>
                   </div>
-                  <div class="col-md-6">
+                  <div class="col-md-4">
                     <div class="form-group">
                       <label class="bmd-label-floating">เพศ</label>
                       <select name="sex" class="form-control" required>
@@ -92,6 +85,9 @@ if(isset($_POST["submit"])){
                       </select>
                     </div>
                   </div>
+
+                </div>
+                <div class="row">
                 </div>
                 <div class="row">
                   <div class="col-md-4">
@@ -114,19 +110,31 @@ if(isset($_POST["submit"])){
                   </div>
                 </div>
                 <div class="row">
-                  <div class="col-md-6">
+                  <div class="col-md-4">
                     <div class="form-group">
                       <label class="bmd-label-floating">น้ำหนัก</label>
+                      <small id="passwordHelpInline" class="text-muted"> (กิโลกรัม)</small>
                       <input type="text" class="form-control" name="weight" value="<?php echo $currentStudent["weight"];?>" required>
+
                     </div>
                   </div>
-                  <div class="col-md-6">
+
+                  <div class="col-md-4">
                     <div class="form-group">
                       <label class="bmd-label-floating">ส่วนสูง</label>
+                      <small id="passwordHelpInline" class="text-muted"> (เซนติเมตร) </small>
                       <input type="text" class="form-control" name="height" value="<?php echo $currentStudent["height"];?>" required>
+                      </div>
+                  </div>
+
+                      <div class="col-md-4">
+                        <div class="form-group">
+                      <label class="bmd-label-floating">รูปภาพนักเรียน</label>
+                      <input type="file" class="form-control" name="image">
                     </div>
                   </div>
                 </div>
+
                 <div class="row">
                   <div class="col-md-6">
                     <div class="form-group">
@@ -137,7 +145,7 @@ if(isset($_POST["submit"])){
                   <div class="col-md-6">
                     <div class="form-group">
                       <label class="bmd-label-floating">เบอร์โทรศัพท์นักเรียน</label>
-                      <input type="text" class="form-control" name="phone_student" value="<?php echo $currentStudent["phone_student"];?>" required>
+                      <input type="text" maxlength=10 minlength=10 class="form-control" name="phone_student" value="<?php echo $currentStudent["phone_student"];?>" required>
                     </div>
                   </div>
                 </div>
@@ -253,8 +261,6 @@ if(isset($_POST["submit"])){
                 </div>
 
                 <hr/>
-                <legend>ความสามารถพิเศษ / ทักษะพิเศษ</legend>
-
 
                 <div align="center">
                   <input type="submit" name="submit" class="btn btn-success btn-round" value="บันทึก">
@@ -368,6 +374,8 @@ if(isset($_POST["submit"])){
         timepicker:false,
         format:'d/m/Y'
       });
+
+
     </script>
 
 

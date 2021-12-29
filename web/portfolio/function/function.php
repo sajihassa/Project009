@@ -67,10 +67,10 @@ function formatDateFull($date){
 	return  $raw_date[2] . "/" . $raw_date[1] . "/" . $raw_date[0];
 }
 
-function saveRegister($username,$password,$email){
+function saveRegister($username,$password,$email,$phone){
 	global $con;
 
-	$sql = "INSERT INTO users (username, password, email) VALUES('".$username."','".$password."','".$email."')";
+	$sql = "INSERT INTO users (username, password, email, phone) VALUES('".$username."','".$password."','".$email."','".$phone."')";
 	mysqli_query($con,$sql);
 
 	mysqli_close($con);
@@ -80,7 +80,7 @@ function saveRegister($username,$password,$email){
 		</script>");
 }
 
-function saveStudent($users_id,$student_id,$firstname,$surname,$nickname,$id_card,$birth_date,$sex,$ethnicity,$nationality,$religion,$weight,$height,$email_student,$phone_student,$motto,$disease,$facebook,$line_id,$home_no,$tambol,$amphur,$province,$zipcode,$image){
+function saveStudent($users_id,$firstname,$surname,$nickname,$id_card,$birth_date,$sex,$ethnicity,$nationality,$religion,$weight,$height,$email_student,$phone_student,$motto,$disease,$facebook,$line_id,$home_no,$tambol,$amphur,$province,$zipcode,$image){
 	global $con;
 
 	$arrDateNow = explode("/", $birth_date);
@@ -99,13 +99,13 @@ function saveStudent($users_id,$student_id,$firstname,$surname,$nickname,$id_car
 			if(move_uploaded_file($_FILES["image"]["tmp_name"],"images/student/".$_FILES["image"]["name"]))
 			{
 
-				$sql_ins = "INSERT INTO students (users_id, student_id, firstname, surname, nickname, id_card, birth_date, sex, ethnicity, nationality, religion, weight, height, email_student, phone_student, motto, disease, facebook, line_id, home_no, tambol, amphur, province, zipcode, image) VALUES('".$users_id."','".$student_id."','".$firstname."','".$surname."','".$nickname."','".$id_card."','".$convert_birth_date."','".$sex."','".$ethnicity."','".$nationality."','".$religion."','".$weight."','".$height."','".$email_student."','".$phone_student."','".$motto."','".$disease."','".$facebook."','".$line_id."','".$home_no."','".$tambol."','".$amphur."','".$province."','".$zipcode."','".$_FILES["image"]["name"]."')";
+				$sql_ins = "INSERT INTO students (users_id, student_id, firstname, surname, nickname, id_card, birth_date, sex, ethnicity, nationality, religion, weight, height, email_student, phone_student, motto, disease, facebook, line_id, home_no, tambol, amphur, province, zipcode, image) VALUES('".$users_id."','".$firstname."','".$surname."','".$nickname."','".$id_card."','".$convert_birth_date."','".$sex."','".$ethnicity."','".$nationality."','".$religion."','".$weight."','".$height."','".$email_student."','".$phone_student."','".$motto."','".$disease."','".$facebook."','".$line_id."','".$home_no."','".$tambol."','".$amphur."','".$province."','".$zipcode."','".$_FILES["image"]["name"]."')";
 				mysqli_query($con,$sql_ins);
 
 			}
 		}else{
 
-			$sql_ins = "INSERT INTO students (users_id, student_id, firstname, surname, nickname, id_card, birth_date, sex, ethnicity, nationality, religion, weight, height, email_student, phone_student, motto, disease, facebook, line_id, home_no, tambol, amphur, province, zipcode) VALUES('".$users_id."','".$student_id."','".$firstname."','".$surname."','".$nickname."','".$id_card."','".$convert_birth_date."','".$sex."','".$ethnicity."','".$nationality."','".$religion."','".$weight."','".$height."','".$email_student."','".$phone_student."','".$motto."','".$disease."','".$facebook."','".$line_id."','".$home_no."','".$tambol."','".$amphur."','".$province."','".$zipcode."')";
+			$sql_ins = "INSERT INTO students (users_id, student_id, firstname, surname, nickname, id_card, birth_date, sex, ethnicity, nationality, religion, weight, height, email_student, phone_student, motto, disease, facebook, line_id, home_no, tambol, amphur, province, zipcode) VALUES('".$users_id."','".$firstname."','".$surname."','".$nickname."','".$id_card."','".$convert_birth_date."','".$sex."','".$ethnicity."','".$nationality."','".$religion."','".$weight."','".$height."','".$email_student."','".$phone_student."','".$motto."','".$disease."','".$facebook."','".$line_id."','".$home_no."','".$tambol."','".$amphur."','".$province."','".$zipcode."')";
 			mysqli_query($con,$sql_ins);
 
 		}
@@ -115,12 +115,12 @@ function saveStudent($users_id,$student_id,$firstname,$surname,$nickname,$id_car
 		if($image != null){
 			if(move_uploaded_file($_FILES["image"]["tmp_name"],"images/student/".$_FILES["image"]["name"]))
 			{
-				$sql_update = "UPDATE students SET student_id='".$student_id."',firstname='".$firstname."',surname='".$surname."',nickname='".$nickname."',id_card='".$id_card."',birth_date='".$convert_birth_date."',sex='".$sex."',ethnicity='".$ethnicity."',nationality='".$nationality."',religion='".$religion."',weight='".$weight."',height='".$height."',email_student='".$email_student."',phone_student='".$phone_student."',motto='".$motto."',disease='".$disease."',facebook='".$facebook."',line_id='".$line_id."',home_no='".$home_no."',tambol='".$tambol."',amphur='".$amphur."',province='".$province."',zipcode='".$zipcode."',image='".$_FILES["image"]["name"]."' WHERE users_id = '".$users_id."'";
+				$sql_update = "UPDATE students SET firstname='".$firstname."',surname='".$surname."',nickname='".$nickname."',id_card='".$id_card."',birth_date='".$convert_birth_date."',sex='".$sex."',ethnicity='".$ethnicity."',nationality='".$nationality."',religion='".$religion."',weight='".$weight."',height='".$height."',email_student='".$email_student."',phone_student='".$phone_student."',motto='".$motto."',disease='".$disease."',facebook='".$facebook."',line_id='".$line_id."',home_no='".$home_no."',tambol='".$tambol."',amphur='".$amphur."',province='".$province."',zipcode='".$zipcode."',image='".$_FILES["image"]["name"]."' WHERE users_id = '".$users_id."'";
 				mysqli_query($con,$sql_update);
 			}
 		}else{
 
-			$sql_update = "UPDATE students SET student_id='".$student_id."',firstname='".$firstname."',surname='".$surname."',nickname='".$nickname."',id_card='".$id_card."',birth_date='".$convert_birth_date."',sex='".$sex."',ethnicity='".$ethnicity."',nationality='".$nationality."',religion='".$religion."',weight='".$weight."',height='".$height."',email_student='".$email_student."',phone_student='".$phone_student."',motto='".$motto."',disease='".$disease."',facebook='".$facebook."',line_id='".$line_id."',home_no='".$home_no."',tambol='".$tambol."',amphur='".$amphur."',province='".$province."',zipcode='".$zipcode."' WHERE users_id = '".$users_id."'";
+			$sql_update = "UPDATE students SET firstname='".$firstname."',surname='".$surname."',nickname='".$nickname."',id_card='".$id_card."',birth_date='".$convert_birth_date."',sex='".$sex."',ethnicity='".$ethnicity."',nationality='".$nationality."',religion='".$religion."',weight='".$weight."',height='".$height."',email_student='".$email_student."',phone_student='".$phone_student."',motto='".$motto."',disease='".$disease."',facebook='".$facebook."',line_id='".$line_id."',home_no='".$home_no."',tambol='".$tambol."',amphur='".$amphur."',province='".$province."',zipcode='".$zipcode."' WHERE users_id = '".$users_id."'";
 			mysqli_query($con,$sql_update);
 
 		}
@@ -387,11 +387,11 @@ function getCurrentEducation($id){
 
 }
 
-function editProfile($id,$username,$password,$email){
+function editProfile($id,$username,$password,$email,$phone){
 
 	global $con;
 
-	$sql = "UPDATE users SET username='".$username."',password='".$password."',email='".$email."' WHERE id = '".$id."'";
+	$sql = "UPDATE users SET username='".$username."',password='".$password."',email='".$email."',phone='".$phone."' WHERE id = '".$id."'";
 	mysqli_query($con,$sql);
 
 	mysqli_close($con);
