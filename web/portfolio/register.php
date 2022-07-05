@@ -6,7 +6,7 @@ require_once("header.php");
 ?>
 <?php
 if(isset($_POST["submit"])){
-  saveRegister($_POST["username"],$_POST["password"],$_POST["email"]);
+  saveRegister($_POST["firstname"],$_POST["surname"],$_POST["username"],$_POST["password"]);
 }
 ?>
 <body class="" style="margin-top: -27px;">
@@ -46,20 +46,29 @@ if(isset($_POST["submit"])){
                 </div>
                 <div class="card-body">
                   <form role="form" method="post" action="">
-                    <label>ชื่อผู้ใช้งาน</label>
+
+                  <label>ชื่อจริง</label>
+                    <div class="mb-3">
+                      <input type="text" name="firstname" class="form-control" placeholder="ชื่อจริง" >
+                    </div>
+
+                    <label>นามสกุล</label>
+                    <div class="mb-3">
+                      <input type="text" name="surname" class="form-control" placeholder="นามสกุล" >
+                    </div>
+
+                    <label>Username</label>
                     <div class="mb-3">
                       <input type="text" name="username" class="form-control" placeholder="Username" >
                     </div>
+
                     <label>รหัสผ่าน</label>
                     <div class="mb-3">
                       <input type="password" name="password" class="form-control" placeholder="Password">
                     </div>
-                    <label>อีเมล</label>
-                    <div class="mb-3">
-                      <input type="text" name="email" class="form-control" placeholder="E-mail">
-                    </div>
+
                     <div class="text-center">
-                      <button type="submit" name="submit" class="btn bg-gradient-info w-100 mt-4 mb-0">เข้าสู่ระบบ</button>
+                      <button type="submit" name="submit" class="btn bg-gradient-info w-100 mt-4 mb-0">ลงทะเบียน</button>
                     </div>
                   </form>
                 </div>

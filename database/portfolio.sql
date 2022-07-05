@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 15, 2021 at 05:05 PM
+-- Generation Time: Jul 05, 2022 at 07:31 AM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 7.4.15
 
@@ -41,7 +41,7 @@ CREATE TABLE `activities` (
 --
 
 INSERT INTO `activities` (`id`, `users_id`, `activity_type`, `activity_topic`, `activity_detail`, `activity_image`) VALUES
-(1, 1, 'กิจกรรมแรก', 'ประกวดอะไรซักอย่าง', 'เป็นการประกวดและการแข่งขันทักษะความเป็นเลิศทางวิชาการ', 'ac.jpg');
+(5, 1, 'ไหว้', 'ไหว้ครู', 'ไหว้ครู', 'tec.jpg');
 
 -- --------------------------------------------------------
 
@@ -9961,7 +9961,8 @@ CREATE TABLE `educations` (
 --
 
 INSERT INTO `educations` (`id`, `users_id`, `study_class`, `type_study`, `grade`, `school`, `province`, `start_year`, `end_year`) VALUES
-(1, 1, 'ประถมศึกษาปีที่ 6', 'ทั่วไป', '3.80', 'ทดลองโรงเรียน', 'ทดลองจังหวัด', 2560, 2565);
+(6, 1, 'มัธยมศึกษาตอนปลาย', 'วิทย์-คณิต', '3.00', 'ปัตตานี', 'ปัตตานี', 2552, 2558),
+(7, 1, 'มัธยมศึกษาตอนต้น', 'วิทย์-คณิต', '0.00', 'akdshg', 'asdfg', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -10000,7 +10001,8 @@ CREATE TABLE `families` (
 --
 
 INSERT INTO `families` (`id`, `users_id`, `father_firstname`, `father_surname`, `father_carrier`, `father_earning`, `father_phone`, `mother_firstname`, `mother_surname`, `mother_carrier`, `mother_earning`, `mother_phone`, `parent_firstname`, `parent_surname`, `parent_carrier`, `parent_earning`, `parent_phone`, `relationship`, `parent_home_no`, `parent_tambol`, `parent_amphur`, `parent_province`, `parent_zipcode`) VALUES
-(1, 1, 'บิดา', 'สกุลบิดา', 'รับจ้าง', 15000, '1236547890', 'มารดา', 'สกุลมาดา', 'รับจ้าง', 12000, '9874563210', 'มารดา', 'สกุลมาดา', 'รับจ้าง', 12000, '9874563210', 'มารดา', '12 บ้านเลขที่', '940701', '971', '74', 94110);
+(1, 1, 'A', 'BC', 'เสียชีวิต', 0, '1235451213', 'b', 'cat', 'รับจ้าง', 12000, '9874563511', 'b', 'cat', 'รับจ้าง', 12000, '5635616165', 'มารดา', '17-19', '960102', '985', '76', 96000),
+(2, 10, 'สายฟ้า', 'ว่ายังไง', 'ค้าขาย', 10000, '0558794165', 'สายฝน', 'ว่ายังไง', 'ค้าขาย', 100000, '0874457789', 'สายฝน', 'ว่ายังไง', 'ค้าขาย', 100000, '0874457789', 'มารดา', '17', '530101', '616', '41', 53000);
 
 -- --------------------------------------------------------
 
@@ -10024,6 +10026,22 @@ INSERT INTO `geographies` (`id`, `name`) VALUES
 (4, 'ภาคตะวันตก'),
 (5, 'ภาคตะวันออก'),
 (6, 'ภาคใต้');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `login_facebook`
+--
+
+CREATE TABLE `login_facebook` (
+  `ID` int(6) NOT NULL,
+  `FACEBOOK_ID` varchar(50) NOT NULL,
+  `NAME` varchar(150) NOT NULL,
+  `EMAIL` varchar(250) NOT NULL,
+  `PICTURE` varchar(250) NOT NULL,
+  `LINK` varchar(250) NOT NULL,
+  `CREATE_DATE` datetime NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -10180,7 +10198,8 @@ CREATE TABLE `students` (
 --
 
 INSERT INTO `students` (`id`, `users_id`, `firstname`, `surname`, `nickname`, `id_card`, `birth_date`, `sex`, `ethnicity`, `nationality`, `religion`, `weight`, `height`, `email_student`, `phone_student`, `motto`, `disease`, `facebook`, `line_id`, `home_no`, `tambol`, `amphur`, `province`, `zipcode`, `image`) VALUES
-(1, 1, 'ทดลอง', 'ทดสอบ', 'เทส', '9874563211236', '2565-06-04', 'หญิง', 'ไทย', 'ไทย', 'พุทธ​', 60, 160, 'student@gmail.com', '3214569780', 'อะไรก็ได้', 'อะไรก็ได้', 'facebook_test', 'test_line', '12 ทดลองๆ', '940701', 971, 74, 94110, 'img.jpg');
+(0, 10, 'รัตนา', 'ว่ายังไง', 'นา', '1914800345117', '2560-06-15', 'หญิง', 'ไทย', 'จีน', 'คริสต์', 60, 170, 'rattana@gmail.com', '0889975894', 'พระจะทำโทษอย่างหนัก', '-', 'Rattana Rat', 'rat123', '11', '410111', 421, 29, 41000, '4DQpjUtzLUwmJZZSB0CgOOVbjbVhAQ2iZJMddTP2T0Vq.jpg'),
+(1, 1, 'สวัสดี', 'ตอนเช้า', 'มอนิ่ง', '9874563211236', '2565-03-04', 'หญิง', 'ไทย', 'ไทย', 'พุทธ', 60, 160, 'student@gmail.com', '0214569546', 'ขี้เกียจวันนี้ สบายวันนี้', '-', 'facebook_test', 'test_line', '12 ทดลองๆ', '950302', 979, 75, 95130, 'toge.png');
 
 -- --------------------------------------------------------
 
@@ -10190,18 +10209,50 @@ INSERT INTO `students` (`id`, `users_id`, `firstname`, `surname`, `nickname`, `i
 
 CREATE TABLE `users` (
   `id` int(11) NOT NULL,
+  `firstname` varchar(45) NOT NULL,
+  `surname` varchar(45) NOT NULL,
   `username` varchar(45) NOT NULL,
-  `password` varchar(45) NOT NULL,
-  `email` varchar(45) NOT NULL,
-  `phone` varchar(15) NOT NULL
+  `password` varchar(45) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `username`, `password`, `email`, `phone`) VALUES
-(1, 'user', 'user', 'user@gmail.com', '1234567890');
+INSERT INTO `users` (`id`, `firstname`, `surname`, `username`, `password`) VALUES
+(1, 'Good', 'Morning', 'user123', '1234'),
+(10, 'รัตนา', 'ว่ายังไง', 'asd', '123');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `users_facebook`
+--
+
+CREATE TABLE `users_facebook` (
+  `id` int(11) NOT NULL,
+  `facebook_id` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `first_name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `last_name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `email` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `picture` text COLLATE utf8_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `users_gmail`
+--
+
+CREATE TABLE `users_gmail` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `password` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `google_id` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Indexes for dumped tables
@@ -10244,6 +10295,13 @@ ALTER TABLE `geographies`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `login_facebook`
+--
+ALTER TABLE `login_facebook`
+  ADD PRIMARY KEY (`ID`),
+  ADD UNIQUE KEY `ID` (`FACEBOOK_ID`);
+
+--
 -- Indexes for table `provinces`
 --
 ALTER TABLE `provinces`
@@ -10256,9 +10314,27 @@ ALTER TABLE `skills`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `students`
+--
+ALTER TABLE `students`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `users_facebook`
+--
+ALTER TABLE `users_facebook`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `users_gmail`
+--
+ALTER TABLE `users_gmail`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -10269,7 +10345,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `activities`
 --
 ALTER TABLE `activities`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `amphures`
@@ -10281,19 +10357,25 @@ ALTER TABLE `amphures`
 -- AUTO_INCREMENT for table `educations`
 --
 ALTER TABLE `educations`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `families`
 --
 ALTER TABLE `families`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `geographies`
 --
 ALTER TABLE `geographies`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT for table `login_facebook`
+--
+ALTER TABLE `login_facebook`
+  MODIFY `ID` int(6) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `provinces`
@@ -10311,7 +10393,19 @@ ALTER TABLE `skills`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
+-- AUTO_INCREMENT for table `users_facebook`
+--
+ALTER TABLE `users_facebook`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `users_gmail`
+--
+ALTER TABLE `users_gmail`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

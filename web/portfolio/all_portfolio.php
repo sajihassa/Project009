@@ -34,7 +34,7 @@ if (isset($_GET['delete'])) {
               <div class="col-lg-3 col-sm-6">
                 <div class="card">
                   <a href="pdf_port1.php" style="text-align:center;" target="_blank">
-                    <img src="images/template_ico.png" >
+                    <img src="images/template.jpg"  class="img-fluid" style="width: 80px;height: 80px;">
                     <hr />
                     <div class="stats">
                       <p style="text-align:center;"><a href="pdf_port1.php" class="btn btn-warning" target="_blank">แสดง</a></p>

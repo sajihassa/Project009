@@ -1,7 +1,7 @@
 ﻿<?php
 error_reporting(0);
 
-//เชื่อต่อ Database
+//เชื่อมต่อ Database
 $con = mysqli_connect("localhost","root","","portfolio");
 
 $con->set_charset("utf8");
@@ -67,10 +67,10 @@ function formatDateFull($date){
 	return  $raw_date[2] . "/" . $raw_date[1] . "/" . $raw_date[0];
 }
 
-function saveRegister($username,$password,$email,$phone){
+function saveRegister($firstname,$surname,$username,$password){
 	global $con;
 
-	$sql = "INSERT INTO users (username, password, email, phone) VALUES('".$username."','".$password."','".$email."','".$phone."')";
+	$sql = "INSERT INTO users (firstname,surname,username, password) VALUES('".$firstname."','".$surname."','".$username."','".$password."')";
 	mysqli_query($con,$sql);
 
 	mysqli_close($con);
@@ -99,13 +99,13 @@ function saveStudent($users_id,$firstname,$surname,$nickname,$id_card,$birth_dat
 			if(move_uploaded_file($_FILES["image"]["tmp_name"],"images/student/".$_FILES["image"]["name"]))
 			{
 
-				$sql_ins = "INSERT INTO students (users_id, student_id, firstname, surname, nickname, id_card, birth_date, sex, ethnicity, nationality, religion, weight, height, email_student, phone_student, motto, disease, facebook, line_id, home_no, tambol, amphur, province, zipcode, image) VALUES('".$users_id."','".$firstname."','".$surname."','".$nickname."','".$id_card."','".$convert_birth_date."','".$sex."','".$ethnicity."','".$nationality."','".$religion."','".$weight."','".$height."','".$email_student."','".$phone_student."','".$motto."','".$disease."','".$facebook."','".$line_id."','".$home_no."','".$tambol."','".$amphur."','".$province."','".$zipcode."','".$_FILES["image"]["name"]."')";
+				$sql_ins = "INSERT INTO students (users_id, firstname, surname, nickname, id_card, birth_date, sex, ethnicity, nationality, religion, weight, height, email_student, phone_student, motto, disease, facebook, line_id, home_no, tambol, amphur, province, zipcode, image) VALUES('".$users_id."','".$firstname."','".$surname."','".$nickname."','".$id_card."','".$convert_birth_date."','".$sex."','".$ethnicity."','".$nationality."','".$religion."','".$weight."','".$height."','".$email_student."','".$phone_student."','".$motto."','".$disease."','".$facebook."','".$line_id."','".$home_no."','".$tambol."','".$amphur."','".$province."','".$zipcode."','".$_FILES["image"]["name"]."')";
 				mysqli_query($con,$sql_ins);
 
 			}
 		}else{
 
-			$sql_ins = "INSERT INTO students (users_id, student_id, firstname, surname, nickname, id_card, birth_date, sex, ethnicity, nationality, religion, weight, height, email_student, phone_student, motto, disease, facebook, line_id, home_no, tambol, amphur, province, zipcode) VALUES('".$users_id."','".$firstname."','".$surname."','".$nickname."','".$id_card."','".$convert_birth_date."','".$sex."','".$ethnicity."','".$nationality."','".$religion."','".$weight."','".$height."','".$email_student."','".$phone_student."','".$motto."','".$disease."','".$facebook."','".$line_id."','".$home_no."','".$tambol."','".$amphur."','".$province."','".$zipcode."')";
+			$sql_ins = "INSERT INTO students (users_id, firstname, surname, nickname, id_card, birth_date, sex, ethnicity, nationality, religion, weight, height, email_student, phone_student, motto, disease, facebook, line_id, home_no, tambol, amphur, province, zipcode) VALUES('".$users_id."','".$firstname."','".$surname."','".$nickname."','".$id_card."','".$convert_birth_date."','".$sex."','".$ethnicity."','".$nationality."','".$religion."','".$weight."','".$height."','".$email_student."','".$phone_student."','".$motto."','".$disease."','".$facebook."','".$line_id."','".$home_no."','".$tambol."','".$amphur."','".$province."','".$zipcode."')";
 			mysqli_query($con,$sql_ins);
 
 		}
@@ -129,7 +129,7 @@ function saveStudent($users_id,$firstname,$surname,$nickname,$id_card,$birth_dat
 	mysqli_close($con);
 	echo ("<script language='JavaScript'>
 		alert('บันทึกข้อมูลเรียบร้อย');
-		window.location.href='edit_personal.php';
+		window.location.href='manage_personal.php';
 		</script>");
 }
 
@@ -387,11 +387,11 @@ function getCurrentEducation($id){
 
 }
 
-function editProfile($id,$username,$password,$email,$phone){
+function editProfile($id,$firstname,$surname,$username,$password){
 
 	global $con;
 
-	$sql = "UPDATE users SET username='".$username."',password='".$password."',email='".$email."',phone='".$phone."' WHERE id = '".$id."'";
+	$sql = "UPDATE users SET password='".$password."' WHERE id = '".$id."'";
 	mysqli_query($con,$sql);
 
 	mysqli_close($con);
@@ -482,4 +482,5 @@ function getAllTambol($amphur){
 	mysqli_close($con);
 
 }
+
 ?>

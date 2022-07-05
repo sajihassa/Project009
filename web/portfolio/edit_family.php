@@ -69,7 +69,7 @@ if(isset($_POST["submit"])){
                   <div class="col-md-12">
                     <div class="form-group">
                       <label class="bmd-label-floating">หมายเลขโทรศัพท์บิดา</label>
-                      <input type="text" maxlength=10 minlength=10 class="form-control" name="father_phone" value="<?php echo $currentFamily["father_phone"];?>" required>
+                      <input type="text" maxlength=10 minlength=10 oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" class="form-control" name="father_phone" value="<?php echo $currentFamily["father_phone"];?>" required>
                     </div>
                   </div>
                 </div>
@@ -107,7 +107,7 @@ if(isset($_POST["submit"])){
                   <div class="col-md-12">
                     <div class="form-group">
                       <label class="bmd-label-floating">หมายเลขโทรศัพท์มารดา</label>
-                      <input type="text"  maxlength=10 minlength=10 class="form-control" name="mother_phone" value="<?php echo $currentFamily["mother_phone"];?>" required>
+                      <input type="text"  maxlength=10 minlength=10 oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" class="form-control" name="mother_phone" value="<?php echo $currentFamily["mother_phone"];?>" required>
                     </div>
                   </div>
                 </div>
@@ -145,7 +145,7 @@ if(isset($_POST["submit"])){
                   <div class="col-md-12">
                     <div class="form-group">
                       <label class="bmd-label-floating">หมายเลขโทรศัพท์ผู้ปกครอง</label>
-                      <input type="text"  maxlength=10 minlength=10 class="form-control" name="parent_phone" value="<?php echo $currentFamily["parent_phone"];?>" required>
+                      <input type="text"  maxlength=10 minlength=10 oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" class="form-control" name="parent_phone" value="<?php echo $currentFamily["parent_phone"];?>" required>
                     </div>
                   </div>
                 </div>
@@ -157,7 +157,8 @@ if(isset($_POST["submit"])){
                         <option value="">-- โปรดระบุ --</option>
                         <option value="บิดา" <?php if($currentFamily['relationship'] == "บิดา"){ ?> selected<?php } ?>>บิดา</option>
                         <option value="มารดา" <?php if($currentFamily['relationship'] == "มารดา"){ ?> selected<?php } ?>>มารดา</option>
-                        <option value="ญาติผู้ใหญ่" <?php if($currentFamily['relationship'] == "ญาติผู้ใหญ่"){ ?> selected<?php } ?>>ญาติผู้ใหญ่</option>
+                        <option value="ลุง / ป้า" <?php if($currentFamily['relationship'] == "ลุง / ป้า"){ ?> selected<?php } ?>>ลุง / ป้า</option>
+                        <option value="น้า / อา" <?php if($currentFamily['relationship'] == "น้า / อา"){ ?> selected<?php } ?>>น้า / อา</option>
                       </select>
                     </div>
                   </div>

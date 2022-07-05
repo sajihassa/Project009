@@ -29,12 +29,12 @@
 						</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link  " href="edit_personal.php">
+						<a class="nav-link  " href="manage_personal.php">
 							<span class="nav-link-text ms-1">ข้อมูลนักเรียน</span>
 						</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link  " href="edit_family.php">
+						<a class="nav-link  " href="manage_family.php">
 							<span class="nav-link-text ms-1">ข้อมูลครอบครัว</span>
 						</a>
 					</li>
@@ -55,7 +55,7 @@
 					</li>
 					<li class="nav-item">
 						<a class="nav-link  " href="profile.php">
-							<span class="nav-link-text ms-1">ข้อมูลส่วนตัว</span>
+							<span class="nav-link-text ms-1">Profile</span>
 						</a>
 					</li>
 					<li class="nav-item">

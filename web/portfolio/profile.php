@@ -7,7 +7,7 @@ require_once("header.php");
 <?php
 $currentUser = getCurrentUser($_SESSION["id"]);
 if(isset($_POST["submit"])){
-  editProfile($_POST["id"],$_POST["username"],$_POST["password"],$_POST["email"],$_POST["phone"]);
+  editProfile($_POST["id"],$_POST["firstname"],$_POST["surname"],$_POST["username"],$_POST["password"]);
 }
 
 ?>
@@ -29,7 +29,7 @@ if(isset($_POST["submit"])){
           <div class="col-md-12">
             <div class="card">
               <div class="card-header card-header-primary">
-                <h4 class="card-title">ข้อมูลส่วนตัว</h4>
+                <h4 class="card-title">Proflie ผู้ใช้งาน</h4>
               </div>
 
               <div class="card-body">
@@ -37,22 +37,25 @@ if(isset($_POST["submit"])){
                   <fieldset disabled>
                     <div class="col-md-4">
                       <div class="form-group">
+                        <label class="bmd-label-floating">ชื่อ</label>
+                        <input type="text" class="form-control" name="firstname" value="<?php echo $currentUser["firstname"];?> <?php echo $currentUser["surname"];?>" required>
+                      </div>
+                    </div>
+
+
+
+                    <div class="col-md-4">
+                      <div class="form-group">
                         <label class="bmd-label-floating">ชื่อผู้ใช้งาน</label>
                         <input type="text" class="form-control" name="username" value="<?php echo $currentUser["username"];?>" required>
                       </div>
                     </div>
                   </fieldset>
+
                   <div class="col-md-4">
                     <div class="form-group">
                       <label class="bmd-label-floating">รหัสผ่าน</label>
                       <input type="password" class="form-control" name="password" value="<?php echo $currentUser["password"];?>" required>
-                    </div>
-                  </div>
-
-                  <div class="col-md-4">
-                    <div class="form-group">
-                      <label class="bmd-label-floating">อีเมล</label>
-                      <input type="text" class="form-control" name="email" value="<?php echo $currentUser["email"];?>" required>
                     </div>
                   </div>
 

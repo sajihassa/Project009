@@ -66,7 +66,7 @@ if(isset($_POST["submit"])){
                   <div class="col-md-4">
                     <div class="form-group">
                       <label class="bmd-label-floating">เลขบัตรประจำตัวประชาชน</label>
-                      <input type="text"  maxlength=13 minlength=13 class="form-control" name="id_card" value="<?php echo $currentStudent["id_card"];?>" required>
+                      <input type="text"  maxlength=13 minlength=13 oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" class="form-control" name="id_card" value="<?php echo $currentStudent["id_card"];?>" required>
                     </div>
                   </div>
                   <div class="col-md-4">
@@ -79,7 +79,6 @@ if(isset($_POST["submit"])){
                     <div class="form-group">
                       <label class="bmd-label-floating">เพศ</label>
                       <select name="sex" class="form-control" required>
-                        <option value="">-- โปรดระบุ --</option>
                         <option value="ชาย" <?php if($currentStudent['sex'] == "ชาย"){ ?> selected<?php } ?>>ชาย</option>
                         <option value="หญิง" <?php if($currentStudent['sex'] == "หญิง"){ ?> selected<?php } ?>>หญิง</option>
                       </select>
@@ -105,7 +104,12 @@ if(isset($_POST["submit"])){
                   <div class="col-md-4">
                     <div class="form-group">
                       <label class="bmd-label-floating">ศาสนา</label>
-                      <input type="text" class="form-control" name="religion" value="<?php echo $currentStudent["religion"];?>" required>
+                      <select name="religion" class="form-control" required>
+                        <option value="พุทธ" <?php if($currentStudent['religion'] == "พุทธ"){ ?> selected<?php } ?>>พุทธ</option>
+                        <option value="อิสลาม" <?php if($currentStudent['religion'] == "อิสลาม"){ ?> selected<?php } ?>>อิสลาม</option>
+                        <option value="คริสต์" <?php if($currentStudent['religion'] == "คริสต์"){ ?> selected<?php } ?>>คริสต์</option>
+                        <option value="พราหมณ์-ฮินดู" <?php if($currentStudent['religion'] == "พราหมณ์-ฮินดู"){ ?> selected<?php } ?>>พราหมณ์-ฮินดู</option>
+                      </select>
                     </div>
                   </div>
                 </div>
@@ -114,7 +118,7 @@ if(isset($_POST["submit"])){
                     <div class="form-group">
                       <label class="bmd-label-floating">น้ำหนัก</label>
                       <small id="passwordHelpInline" class="text-muted"> (กิโลกรัม)</small>
-                      <input type="text" class="form-control" name="weight" value="<?php echo $currentStudent["weight"];?>" required>
+                      <input type="text" class="form-control" name="weight" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" value="<?php echo $currentStudent["weight"];?>" required>
 
                     </div>
                   </div>
@@ -123,7 +127,7 @@ if(isset($_POST["submit"])){
                     <div class="form-group">
                       <label class="bmd-label-floating">ส่วนสูง</label>
                       <small id="passwordHelpInline" class="text-muted"> (เซนติเมตร) </small>
-                      <input type="text" class="form-control" name="height" value="<?php echo $currentStudent["height"];?>" required>
+                      <input type="text" class="form-control" name="height" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" value="<?php echo $currentStudent["height"];?>" required>
                       </div>
                   </div>
 
@@ -145,7 +149,7 @@ if(isset($_POST["submit"])){
                   <div class="col-md-6">
                     <div class="form-group">
                       <label class="bmd-label-floating">เบอร์โทรศัพท์นักเรียน</label>
-                      <input type="text" maxlength=10 minlength=10 class="form-control" name="phone_student" value="<?php echo $currentStudent["phone_student"];?>" required>
+                      <input type="text" maxlength=10 minlength=10 oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" class="form-control" name="phone_student" value="<?php echo $currentStudent["phone_student"];?>" required>
                     </div>
                   </div>
                 </div>
